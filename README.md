@@ -14,19 +14,32 @@ curl -fsSL https://ddev.com/install.sh | bash
 
 ```sh
 git clone https://github.com/b00tahead/fio-bookshelf-mirror.git
-```
 
-### Configure DDEV
-
-```sh
 cd fio-bookshelf-mirror
-ddev config --auto
 ```
 
 ### Start up DDEV container
 
 ```sh
 ddev start
+```
+
+### Install drush
+
+```sh
+ddev composer require drush/drush
+```
+
+### Configure DDEV
+
+```sh
+ddev config --auto
+```
+
+### Install Drupal site
+
+```sh
+ddev drush site:install -y
 ```
 
 ### Import DB
@@ -43,16 +56,16 @@ ddev import-db fio-bookshelf-mirror < .backups/fio-bookshelf_dev_2024-03-08T01-4
 ddev import-files --source=.backups/fio-bookshelf_dev_2024-03-08T01-43-57_UTC_files.tar.gz
 ```
 
-### Install drush
+### Restart DDEV container
 
 ```sh
-ddev composer require drush/drush
+ddev restart
 ```
 
-### Install Drupal site
+### Clear DB cache
 
 ```sh
-ddev drush site:install -y
+ddev drush cr
 ```
 
 ### Launch site
