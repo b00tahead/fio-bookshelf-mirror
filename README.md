@@ -1,14 +1,12 @@
 # Setting up project locally
 
-### Install Docker Desktop for Mac
+### Install Docker Desktop
 
-Follow the instructions here: https://ddev.readthedocs.io/en/latest/users/install/docker-installation/#docker-desktop-for-mac
+Follow the instructions here: https://ddev.readthedocs.io/en/latest/users/install/docker-installation/
 
 ### Install DDEV
 
-```sh
-curl -fsSL https://ddev.com/install.sh | bash
-```
+Follow the instructions here: https://ddev.readthedocs.io/en/latest/users/install/ddev-installation/
 
 ### Clone project
 
@@ -45,9 +43,9 @@ ddev drush site:install -y
 ### Import DB
 
 ```sh
-gunzip .backups/fio-bookshelf_dev_2024-03-08T11-51-06_UTC_database.sql.sql.gz
+gunzip .backups/fio-bookshelf_dev_2024-03-08T11-51-06_UTC_database.sql.gz
 
-ddev import-db fio-bookshelf-mirror < .backups/fio-bookshelf_dev_2024-03-08T11-51-06_UTC_database.sql.sql
+ddev import-db fio-bookshelf-mirror < .backups/fio-bookshelf_dev_2024-03-08T11-51-06_UTC_database.sql
 ```
 
 ### Import files
