@@ -24,6 +24,8 @@ include __DIR__ . "/settings.pantheon.php";
  * https://www.drupal.org/project/drupal/issues/3091285
  */
 // $settings['skip_permissions_hardening'] = TRUE;
+// $settings['file_assets_path'] = 'sites/default/files/files_dev';
+$settings['file_public_path'] = 'sites/default/files/files_dev';
 
 /**
  * If there is a local settings file, then include it

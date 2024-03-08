@@ -1,22 +1,62 @@
-# Composer-enabled Drupal template
+# Setting up project locally
 
-This is Pantheon's recommended starting point for forking new [Drupal](https://www.drupal.org/) upstreams
-that work with the Platform's Integrated Composer build process. It is also the
-Platform's standard Drupal 9 upstream.
+### Install Docker Desktop for Mac
 
-Unlike with earlier Pantheon upstreams, files such as Drupal Core that you are
-unlikely to adjust while building sites are not in the main branch of the 
-repository. Instead, they are referenced as dependencies that are installed by
-Composer.
+Follow the instructions here: https://ddev.readthedocs.io/en/latest/users/install/docker-installation/#docker-desktop-for-mac
 
-For more information and detailed installation guides, please visit the
-Integrated Composer Pantheon documentation: https://pantheon.io/docs/integrated-composer
+### Install DDEV
 
-## Contributing
+```sh
+curl -fsSL https://ddev.com/install.sh | bash
+```
 
-Contributions are welcome in the form of GitHub pull requests. However, the
-`pantheon-upstreams/drupal-composer-managed` repository is a mirror that does not
-directly accept pull requests.
+### Clone project
 
-Instead, to propose a change, please fork [pantheon-systems/drupal-composer-managed](https://github.com/pantheon-systems/drupal-composer-managed)
-and submit a PR to that repository.
+```sh
+git clone https://github.com/b00tahead/fio-bookshelf-mirror.git
+```
+
+### Configure DDEV
+
+```sh
+cd fio-bookshelf-mirror
+ddev config --auto
+```
+
+### Start up DDEV container
+
+```sh
+ddev start
+```
+
+### Import DB
+
+```sh
+gunzip .backups/fio-bookshelf_dev_2024-03-08T01-43-57_UTC_database.sql.gz
+
+ddev import-db fio-bookshelf-mirror < .backups/fio-bookshelf_dev_2024-03-08T01-43-57_UTC_database.sql
+```
+
+### Import files
+
+```sh
+ddev import-files --source=.backups/fio-bookshelf_dev_2024-03-08T01-43-57_UTC_files.tar.gz
+```
+
+### Install drush
+
+```sh
+ddev composer require drush/drush
+```
+
+### Install Drupal site
+
+```sh
+ddev drush site:install -y
+```
+
+### Launch site
+
+```sh
+ddev launch
+```
