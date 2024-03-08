@@ -45,9 +45,9 @@ ddev drush site:install -y
 ### Import DB
 
 ```sh
-gunzip .backups/fio-bookshelf_dev_2024-03-08T01-43-57_UTC_database.sql.gz
+gunzip .backups/fio-bookshelf_dev_2024-03-08T11-51-06_UTC_database.sql.sql.gz
 
-ddev import-db fio-bookshelf-mirror < .backups/fio-bookshelf_dev_2024-03-08T01-43-57_UTC_database.sql
+ddev import-db fio-bookshelf-mirror < .backups/fio-bookshelf_dev_2024-03-08T11-51-06_UTC_database.sql.sql
 ```
 
 ### Import files
